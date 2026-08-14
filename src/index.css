@@ -1,0 +1,1524 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+/* Motion Tokens & Smooth Transitions Scale */
+:root {
+  --font-serif: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --color-btn-dark: #515357;
+  --color-btn-dark-hover: #3d3e42;
+  
+  --duration-fast: 250ms;
+  --duration-medium: 350ms;
+  --duration-slow: 500ms;
+  --ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.25, 0.64, 1);
+  --blur-small: 3px;
+}
+
+/* Scroll Reveal Entrance Animations (Vector Crisp Text) */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.75s var(--ease-smooth-out),
+              transform 0.75s var(--ease-smooth-out);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger Delays */
+.stagger-1 { transition-delay: 0.08s; }
+.stagger-2 { transition-delay: 0.16s; }
+.stagger-3 { transition-delay: 0.24s; }
+.stagger-4 { transition-delay: 0.32s; }
+
+/* Swiss Flag & Icon Micro-Animations */
+@keyframes swissPulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 2px 4px rgba(213, 43, 30, 0.15)); }
+  50% { transform: scale(1.08); filter: drop-shadow(0 4px 10px rgba(213, 43, 30, 0.4)); }
+}
+
+.swiss-flag-animated {
+  display: inline-block;
+  vertical-align: middle;
+  animation: swissPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes iconCircleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.icon-circle-float {
+  animation: iconCircleFloat 3.5s ease-in-out infinite;
+}
+
+/* Hero Cinematic Fade & Staggered Motion (Velvety Smooth Transitions) */
+.hero-fade-layer {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.hero-fade-layer.is-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-stagger-1.is-active { transition-delay: 0.12s; }
+.hero-stagger-2.is-active { transition-delay: 0.22s; }
+.hero-stagger-3.is-active { transition-delay: 0.32s; }
+.hero-stagger-4.is-active { transition-delay: 0.42s; }
+
+.hero-preview-layer {
+  opacity: 0;
+  transform: translateY(6px) scale(0.98);
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.hero-preview-layer.is-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 30% Preview Hover Zoom & Tint Fade Effects */
+.preview-img-target {
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  will-change: transform;
+}
+
+.preview-tint-target {
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  will-change: opacity;
+}
+
+div:hover > .preview-img-target {
+  transform: scale(1.08) !important;
+}
+
+div:hover > .preview-tint-target {
+  opacity: 0 !important;
+}
+
+/* 30% Preview Animated Title & Click Indicator Badge */
+.preview-text-animated {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.85rem;
+  width: 100%;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: floatBreathe 3.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+.preview-text-animated h3 {
+  text-align: center !important;
+}
+
+@keyframes floatBreathe {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.hero-preview-layer:hover .preview-text-animated {
+  animation-play-state: paused;
+  transform: translateY(-8px) scale(1.04);
+}
+
+.preview-click-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 11px 34px;
+  border-radius: 0px; /* Sharp high-fashion poster box corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+/* Periodic & Hover Shimmer Glare Sweep Effect (Блик) */
+.preview-click-badge::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 75%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 20%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.05) 80%,
+    transparent 100%
+  );
+  transform: skewX(-22deg);
+  animation: periodicShimmer 3.8s ease-in-out infinite;
+}
+
+@keyframes periodicShimmer {
+  0%, 60% {
+    left: -130%;
+  }
+  100% {
+    left: 140%;
+  }
+}
+
+.pulse-dot {
+  color: #22c55e;
+  font-size: 8px;
+  animation: dotPulse 1.8s infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(1.3); }
+}
+
+.hero-preview-layer:hover .preview-click-badge {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2);
+  transform: scale(1.03);
+}
+
+.hero-preview-layer:hover .preview-click-badge::after {
+  animation: hoverFastShimmer 0.75s ease-in-out forwards;
+}
+
+@keyframes hoverFastShimmer {
+  0% { left: -130%; }
+  100% { left: 140%; }
+}
+
+/* Vector Arrow Hover Animations (transitions-dev) */
+.btn-arrow, .badge-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  vertical-align: middle;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+}
+
+.btn-arrow svg, .badge-arrow svg {
+  display: block;
+}
+
+button:hover .btn-arrow,
+.btn-buy:hover .btn-arrow,
+.preview-click-badge:hover .badge-arrow,
+/* Poster Subtitle Tag (Ultra-crisp & Proportioned) */
+.poster-tagline {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Minimalist Hero Feature Strip (No Frames, Clean Lines & Hover Motion) */
+.hero-features-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.1rem;
+  margin-top: 1.85rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  width: 100%;
+  max-width: 760px;
+}
+
+.feature-line-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  padding-right: 0.65rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.14);
+  transition: transform 0.3s ease;
+  cursor: default;
+}
+
+.feature-line-item:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.feature-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #ffffff;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.feature-icon-box svg {
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+}
+
+.feature-line-item:hover .feature-icon-box {
+  background: rgba(255, 255, 255, 0.95);
+  color: #090909;
+  border-color: #ffffff;
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.35);
+}
+
+.feature-line-item:hover .feature-icon-box svg {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.feature-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  transition: color 0.3s ease;
+}
+
+.feature-desc {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.feature-line-item:hover .feature-title {
+  color: #ffffff;
+}
+
+.feature-line-item:hover .feature-desc {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* Smooth Accordion Expansion (transitions-dev #21) */
+.accordion-content-grid {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s var(--ease-smooth-out);
+}
+
+.accordion-content-grid.is-open {
+  grid-template-rows: 1fr;
+}
+
+.accordion-content-inner {
+  overflow: hidden;
+}
+
+/* Smooth Button Click & Hover Shimmer Effects (transitions-dev) */
+.btn-buy {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              background-color 0.3s ease !important;
+  will-change: transform, box-shadow;
+}
+
+.btn-buy:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.btn-buy:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.btn-arrow {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+}
+
+.btn-buy:hover .btn-arrow,
+a:hover .btn-arrow,
+button:hover .btn-arrow {
+  transform: translateX(6px);
+}
+
+/* Button Shimmer Glare Sweep */
+.btn-buy::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.btn-buy:hover::after {
+  animation: shimmerSweep 0.9s ease-out forwards;
+}
+
+@keyframes shimmerSweep {
+  0% {
+    left: -75%;
+    opacity: 0.8;
+  }
+  100% {
+    left: 125%;
+    opacity: 0;
+  }
+}
+
+/* Card Hover Lift & Soft Depth */
+.card-hover-lift {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.4s ease !important;
+  will-change: transform, box-shadow;
+}
+
+.card-hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Glass Modal Entrance Animation */
+.glass-modal-overlay {
+  animation: glassFadeIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.glass-modal-panel {
+  animation: glassScaleUp 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes glassFadeIn {
+  from { opacity: 0; backdrop-filter: blur(0px); }
+  to { opacity: 1; backdrop-filter: blur(16px); }
+}
+
+@keyframes glassScaleUp {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #ffffff;
+  color: #090909;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11", "kern";
+  font-kerning: normal;
+  overflow-x: hidden;
+}
+
+svg, img {
+  shape-rendering: geometricPrecision;
+}
+
+/* Glassy Sheen Hover Shine Animation */
+.glossy-sheen-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), boxShadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.glossy-sheen-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -150%;
+  width: 100%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 45%,
+    rgba(255, 255, 255, 0.65) 50%,
+    rgba(255, 255, 255, 0.35) 55%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  transition: left 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.glossy-sheen-card:hover::after {
+  left: 150%;
+}
+
+.glossy-sheen-card:hover {
+  transform: translateY(-4px) scale(1.015);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.12);
+}
+
+/* Custom Typography Helper Classes */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Button Styling matching mypureskin.in.ua - Rounded Luxury Pill Style */
+.btn-buy {
+  background-color: var(--color-btn-dark);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 14px 38px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(30, 31, 31, 0.15);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+.btn-buy:hover {
+  background-color: var(--color-btn-dark-hover);
+  box-shadow: 0 8px 22px rgba(30, 31, 31, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Slow Gentle Pulse for Slider Handle Arrows */
+@keyframes arrowLeft {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-4px); }
+}
+
+@keyframes arrowRight {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+
+@keyframes badgeLeftPulse {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-6px); }
+}
+
+@keyframes badgeRightPulse {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(6px); }
+}
+
+.animate-arrow-left {
+  animation: arrowLeft 1.5s ease-in-out infinite;
+}
+
+.animate-arrow-right {
+  animation: arrowRight 1.5s ease-in-out infinite;
+}
+
+.animate-badge-left {
+  animation: badgeLeftPulse 1.8s ease-in-out infinite;
+}
+
+.animate-badge-right {
+  animation: badgeRightPulse 1.8s ease-in-out infinite;
+}
+
+/* ================= ANIMATED FLOATING ICONS ONLY ================= */
+@keyframes iconFloat1 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-3.5px) rotate(10deg); }
+}
+
+@keyframes iconFloat2 {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-4px) scale(1.12); }
+}
+
+@keyframes iconFloat3 {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+}
+
+@keyframes iconFloat4 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4.5px); }
+}
+
+.animate-icon-1 { animation: iconFloat1 3s ease-in-out infinite; }
+.animate-icon-2 { animation: iconFloat2 2.6s ease-in-out infinite; }
+.animate-icon-3 { animation: iconFloat3 3.2s ease-in-out infinite; }
+.animate-icon-4 { animation: iconFloat4 2.4s ease-in-out infinite; }
+
+/* Ultra-thin, 3x delicate elegant scrollbar for product details */
+.product-details-scrollable::-webkit-scrollbar {
+  width: 1.5px;
+}
+
+.product-details-scrollable::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.product-details-scrollable::-webkit-scrollbar-thumb {
+  background: rgba(9, 9, 9, 0.22);
+  border-radius: 2px;
+}
+
+.product-details-scrollable::-webkit-scrollbar-thumb:hover {
+  background: rgba(9, 9, 9, 0.55);
+}
+
+.product-details-scrollable {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(9, 9, 9, 0.22) transparent;
+}
+
+/* Trust Guarantee Card Hover Motion */
+.trust-guarantee-card {
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.trust-guarantee-card:hover {
+  transform: translateY(-3px);
+  border-color: #090909 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+/* ========================================================================= */
+/* MOBILE RESPONSIVE OPTIMIZATIONS (DESKTOP UNTOUCHED)                       */
+/* ========================================================================= */
+
+@media (min-width: 769px) {
+  .hero-mobile-toggle-bar {
+    display: none !important;
+  }
+}
+
+/* Desktop default hero container & content padding */
+.hero-section-container {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 88px);
+  min-height: calc(100vh - 88px);
+  overflow: hidden;
+  display: flex;
+  box-sizing: border-box;
+  background-color: #090909;
+}
+
+.hero-content-padding {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: calc(88px + 3rem) 4.5rem 4.5rem 4.5rem;
+  box-sizing: border-box;
+}
+
+/* Gallery last tile arrow animation */
+@keyframes arrowSlideRight {
+  0%, 100% {
+    transform: translateX(-3px);
+  }
+  50% {
+    transform: translateX(3px);
+  }
+}
+
+.animate-arrow-bounce {
+  animation: arrowSlideRight 1.2s ease-in-out infinite;
+}
+
+.gallery-last-tile-text {
+  display: block;
+}
+
+.gallery-last-tile-arrow {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* Compact mobile header */
+  header {
+    height: 60px !important;
+  }
+
+  header img {
+    height: 28px !important;
+  }
+
+  /* Screen 1: Hero Slider Mobile Stack (Exact 100% Screen Height Fit iOS & Android) */
+  .hero-section-container {
+    position: relative !important;
+    width: 100% !important;
+    height: calc(100dvh - 60px) !important;
+    min-height: calc(100dvh - 60px) !important;
+    height: calc(100vh - 60px) !important;
+    min-height: calc(100vh - 60px) !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    background-color: #090909 !important;
+  }
+
+  .hero-mobile-toggle-bar {
+    display: flex !important;
+    position: absolute;
+    top: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 35;
+    background: rgba(18, 18, 18, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 30px;
+    padding: 3px;
+    gap: 4px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    max-width: 92vw;
+  }
+
+  .hero-mobile-toggle-bar button {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 7px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+  }
+
+  .hero-mobile-toggle-bar button.active {
+    background: #ffffff;
+    color: #090909;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  .hero-column {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    position: absolute !important;
+    inset: 0 !important;
+    transition: opacity 0.45s ease, transform 0.45s ease !important;
+  }
+
+  .hero-column video {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+
+  .hero-column.is-inactive {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: scale(0.97) !important;
+    visibility: hidden !important;
+  }
+
+  .hero-column.is-active {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: scale(1) !important;
+    visibility: visible !important;
+  }
+
+  .hero-preview-layer {
+    display: none !important;
+  }
+
+  .hero-content-padding {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 4.25rem 1.75rem 1.75rem 1.75rem !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    z-index: 10 !important;
+  }
+
+  #hero h1 {
+    font-size: 1.75rem !important;
+    line-height: 1.22 !important;
+    margin-bottom: 0.85rem !important;
+  }
+
+  #hero p {
+    font-size: 14.5px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  #hero .btn-buy {
+    width: auto !important;
+    max-width: fit-content !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 14px 28px !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .hero-features-strip {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.75rem !important;
+    margin-top: 1.5rem !important;
+  }
+
+  .feature-line-item {
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(8px) !important;
+    padding: 8px 12px !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  }
+
+  /* Screen 2: NeedsFilter Mobile Responsive 2x2 Grid */
+  #needs-filter {
+    height: auto !important;
+    min-height: auto !important;
+    padding: 3rem 1.25rem 3.5rem 1.25rem !important;
+  }
+
+  #needs-filter h2 {
+    font-size: 1.75rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  #needs-filter p {
+    font-size: 13.5px !important;
+    line-height: 1.4 !important;
+  }
+
+  .step-bar-mobile {
+    gap: 6px !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .step-pill-item {
+    padding: 8px 6px !important;
+    font-size: 11px !important;
+    border-radius: 10px !important;
+    gap: 4px !important;
+  }
+
+  .step-pill-item span {
+    font-size: 10.5px !important;
+  }
+
+  .visual-tiles-grid,
+  .sub-categories-grid,
+  .age-groups-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  .quiz-tile-card {
+    min-height: 220px !important;
+    height: 220px !important;
+    border-radius: 18px !important;
+    padding: 1.1rem 0.9rem !important;
+  }
+
+  .quiz-tile-card h3,
+  .quiz-tile-card h4 {
+    font-size: 15px !important;
+    line-height: 1.25 !important;
+  }
+
+  .quiz-tile-card p {
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+  }
+
+  /* Screen 3: Product Lineup Section Mobile Adaptation (Option 1: Vertical Stack of 4 Premium Cards) */
+  #product-lineup-section {
+    height: auto !important;
+    min-height: auto !important;
+    padding: 3rem 1.25rem 3.5rem 1.25rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .product-lineup-header {
+    position: relative !important;
+    inset: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .product-lineup-header h2 {
+    font-size: 1.55rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .product-lineup-header p {
+    font-size: 13.5px !important;
+    line-height: 1.5 !important;
+  }
+
+  .product-lineup-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+    border-radius: 20px !important;
+    box-shadow: none !important;
+    border: none !important;
+    overflow: visible !important;
+  }
+
+  .product-lineup-card {
+    height: 440px !important;
+    min-height: 440px !important;
+    border-radius: 24px !important;
+    border-right: none !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06) !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  .product-lineup-card-content {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 10 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    box-sizing: border-box !important;
+    padding: 1.25rem 1.25rem 1.75rem 1.25rem !important;
+  }
+
+  .product-card-bottom-info {
+    margin-top: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.4rem !important;
+  }
+
+  /* ============================================================ */
+  /* Screen 5c: Ingredients 9-Grid — Mobile                      */
+  /* 1-column full-width cards, compact text, dose badge inline  */
+  /* ============================================================ */
+
+  /* Top spacing from previous section */
+  .ingredients-section {
+    margin-top: 2rem !important;
+    gap: 1.25rem !important;
+  }
+
+  /* Section header compact */
+  .ingredients-section > div:first-child h3 {
+    font-size: 1.55rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+
+  .ingredients-section > div:first-child p {
+    font-size: 13px !important;
+  }
+
+  /* Grid: 1 column, full width */
+  .ingredients-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.65rem !important;
+  }
+
+  /* Each card: 16:9, less rounded */
+  .ingredients-grid .glossy-sheen-card {
+    aspect-ratio: 16 / 7 !important;
+    border-radius: 12px !important;
+  }
+
+  /* Text overlay: row layout — name LEFT, dose badge inline */
+  .ingredient-text-overlay {
+    padding: 0.85rem 1rem !important;
+    max-width: 65% !important;
+    gap: 3px !important;
+    justify-content: flex-end !important;
+  }
+
+  .ingredient-text-overlay h4 {
+    font-size: 13.5px !important;
+    line-height: 1.2 !important;
+  }
+
+  .ingredient-text-overlay p {
+    font-size: 10.5px !important;
+    line-height: 1.35 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+
+  /* Dose badge: bottom-left corner on mobile (next to text) */
+  .ingredient-dose-badge {
+    top: auto !important;
+    bottom: 10px !important;
+    right: 10px !important;
+    font-size: 11px !important;
+    padding: 4px 10px !important;
+    border-radius: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+  }
+
+  /* Pill icon before dose text */
+  .ingredient-dose-badge::before {
+    content: '💊';
+    font-size: 11px !important;
+    line-height: 1 !important;
+  }
+
+  /* ============================================================ */
+  /* Screen 5b: Оптимальна клітинна регенерація — Mobile        */
+  /* Layout: [Title full-width on top]                           */
+  /*         [Stats LEFT  |  Photo RIGHT]                        */
+  /* ============================================================ */
+
+  /*
+   * Strategy: dissolve clinical-regen-left (display:contents) so
+   * clinical-regen-title, clinical-regen-stats, and clinical-regen-photo
+   * all become direct children of clinical-regen-grid.
+   * Then use a 2-col grid with clinical-regen-title spanning both cols.
+   */
+
+  .clinical-regen-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.75rem 0.85rem !important;
+    align-items: center !important;
+    margin-top: 2rem !important;
+    margin-bottom: 2.5rem !important;
+  }
+
+  /* Dissolve left col wrapper — children become grid items */
+  .clinical-regen-left {
+    display: contents !important;
+  }
+
+  /* Title: spans both columns, centered */
+  .clinical-regen-title {
+    grid-column: 1 / -1 !important;
+    text-align: center !important;
+  }
+
+  .clinical-regen-title h3 {
+    font-size: 1.35rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 2px !important;
+  }
+
+  .clinical-regen-title > div {
+    font-size: 0.9rem !important;
+  }
+
+  /* Stats 2×2 grid — left column */
+  .clinical-regen-stats {
+    grid-column: 1 !important;
+    gap: 0.35rem !important;
+    padding-top: 0 !important;
+    align-self: center !important;
+  }
+
+  /* Photo — right column, big */
+  .clinical-regen-photo {
+    grid-column: 2 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    grid-row: 2 !important;
+  }
+
+  .clinical-regen-photo img {
+    max-height: 220px !important;
+    width: 100% !important;
+    object-fit: contain !important;
+  }
+
+  /* Hide paragraph text below stats on mobile */
+  .clinical-regen-left > p {
+    display: none !important;
+  }
+
+  /* Stat items — compact icon on top, number, label */
+  .clinical-regen-stat-item {
+    padding: 0.15rem !important;
+    gap: 0 !important;
+  }
+
+  .clinical-regen-stat-item .icon-circle-float {
+    width: 26px !important;
+    height: 26px !important;
+    margin-bottom: 0.2rem !important;
+  }
+
+  .clinical-regen-stat-item .icon-circle-float svg {
+    width: 13px !important;
+    height: 13px !important;
+  }
+
+  /* Animated number — smaller */
+  .clinical-regen-stat-item > span,
+  .clinical-regen-stat-item > div > span {
+    font-size: 1.2rem !important;
+    line-height: 1 !important;
+    margin-bottom: 2px !important;
+  }
+
+  .clinical-regen-stat-item > div:last-child {
+    font-size: 9.5px !important;
+    line-height: 1.25 !important;
+  }
+
+  /* ============================================================ */
+  /* Screen 5: ClinicalInfographicSection — Mobile Stack         */
+  /* Order: 1. Tabs  2. Title+Desc  3. Photo  4. Stats           */
+  /* ============================================================ */
+
+  /* Outer 2-col grid → flex column */
+  .clinical-split-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+    margin-bottom: 2.5rem !important;
+  }
+
+  /* Dissolve columns so children can be ordered */
+  .clinical-photo-col,
+  .clinical-info-col {
+    display: contents !important;
+  }
+
+  /* ORDER 1 — Timeline tabs */
+  .clinical-tabs-block {
+    order: 1 !important;
+  }
+
+  /* ORDER 2 — Label + title + description */
+  .clinical-text-block {
+    order: 2 !important;
+    gap: 0.65rem !important;
+  }
+
+  .clinical-text-block h3 {
+    font-size: 1.45rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .clinical-text-block p {
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* ORDER 3 — Photo slider */
+  .clinical-photo-col > div:first-child {
+    order: 3 !important;
+  }
+
+  /* Tooltip under slider */
+  .clinical-photo-col > div:last-child {
+    order: 3 !important;
+    font-size: 11.5px !important;
+  }
+
+  /* Photo slider height — compact on mobile */
+  .clinical-photo-col > div:first-child {
+    height: 240px !important;
+    border-radius: 14px !important;
+  }
+
+  .clinical-photo-col > div:first-child > div,
+  .clinical-photo-col > div:first-child > img {
+    border-radius: 14px !important;
+  }
+
+  /* ORDER 4 — Stats cards */
+  .clinical-stats-block {
+    order: 4 !important;
+    gap: 0.75rem !important;
+    padding-top: 0.85rem !important;
+    border-top: 1px solid #f4f4f5 !important;
+  }
+
+  .clinical-stats-block > div {
+    padding: 10px 14px !important;
+    border-radius: 12px !important;
+  }
+
+  /* ORDER 5 — Swiss label */
+  .clinical-swiss-label {
+    order: 5 !important;
+    font-size: 11px !important;
+  }
+
+  /* ============================================================ */
+  /* Screen 4: ProductSection — Ordered Mobile Stack             */
+  /* Order: 1. Info+Accordions  2. Gallery  3. Buy  4. IdealFor */
+  /* ============================================================ */
+  #product-section {
+    min-height: auto !important;
+    padding: 2rem 1rem 3rem 1rem !important;
+  }
+
+  /* Outer grid → flex column so children can be ordered */
+  .product-hero-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+
+  /* Accordions: 2 columns × 3 rows on mobile */
+  .product-accordions-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0 0.65rem !important;
+    border-top: 1px solid #e4e4e7 !important;
+    padding-top: 0.75rem !important;
+    align-items: start !important;
+  }
+
+  /* RIGHT column becomes flex column too, children get order */
+  .product-details-scrollable {
+    display: contents !important; /* dissolve the column, children become direct flex items of product-hero-grid */
+    position: static !important;
+    top: auto !important;
+    max-height: none !important;
+    overflow-y: visible !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* ORDER 1 — Product info + accordions */
+  .product-info-top {
+    order: 1 !important;
+    gap: 0.8rem !important;
+  }
+
+  /* ORDER 2 — Gallery (left column div) */
+  .product-gallery-container {
+    order: 2 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 6px !important;
+  }
+
+  /* ORDER 3 — Buy block */
+  .product-buy-bottom {
+    order: 3 !important;
+    gap: 0.85rem !important;
+  }
+
+  /* ── Gallery sizes ── */
+  .product-upper-bento {
+    display: block !important;
+    width: 100% !important;
+    height: 260px !important;
+    max-height: 260px !important;
+  }
+
+  .product-main-viewer {
+    width: 100% !important;
+    height: 260px !important;
+    max-height: 260px !important;
+    border-radius: 16px !important;
+  }
+
+  .product-bento-side-column {
+    display: none !important;
+  }
+
+  /* Thumbnail strip */
+  .product-lower-bento {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    gap: 6px !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    margin-top: 6px !important;
+    padding-bottom: 2px !important;
+    scrollbar-width: none !important;
+  }
+
+  .product-lower-bento::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .product-lower-bento > div {
+    flex: 0 0 52px !important;
+    width: 52px !important;
+    height: 52px !important;
+    max-height: 52px !important;
+    border-radius: 10px !important;
+  }
+
+  /* Mobile: hide "+8 фото" text, show animated moving arrow */
+  .gallery-last-tile-text {
+    display: none !important;
+  }
+
+  .gallery-last-tile-arrow {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* ── Typography — compact ── */
+  .product-info-top {
+    gap: 0.85rem !important;
+  }
+
+  .product-info-top h1 {
+    font-size: 1.4rem !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.01em !important;
+    margin-bottom: 0.2rem !important;
+  }
+
+  /* Description — React controls line-clamp via inline style; CSS just sets font */
+  .product-info-top > div > p {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+  }
+
+  /* Show the «Читати більше» toggle on mobile */
+  .desc-toggle-btn {
+    display: block !important;
+    margin-top: 4px !important;
+  }
+
+  /* Badges compact */
+  .product-info-top > div:first-child span {
+    font-size: 10.5px !important;
+    padding: 3px 9px !important;
+  }
+
+  /* Accordion compact — fits 2-column grid */
+  .product-accordion-title {
+    font-size: 11.5px !important;
+    padding: 0.35rem 0 !important;
+    line-height: 1.35 !important;
+  }
+
+  .product-accordion-items li {
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Pack options compact */
+  .product-pack-label {
+    font-size: 11.5px !important;
+  }
+
+  .product-pack-option {
+    padding: 9px 10px !important;
+  }
+
+  .product-pack-price {
+    font-size: 14px !important;
+  }
+
+  .product-pack-option span:first-child {
+    font-size: 11px !important;
+  }
+
+  .product-qty-row {
+    padding-top: 0.65rem !important;
+  }
+
+  .product-buy-bottom .btn-buy {
+    padding: 11px 14px !important;
+    font-size: 12px !important;
+    border-radius: 10px !important;
+  }
+
+  /* ── IDEAL FOR — 2 columns, full width after buy block ── */
+  /* Left col outer div contains both gallery + ideal-for */
+  /* On mobile ideal-for stays inside left col which is order:2 — but below gallery */
+  /* So we just make ideal-for grid 2 columns */
+  .product-ideal-for-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.4rem 1.25rem !important;
+    font-size: 11.5px !important;
+  }
+
+  /* Hide formula footer row on mobile */
+  .product-formula-footer {
+    display: none !important;
+  }
+
+  /* Official Leaflet Modal Mobile Adaptation */
+  .glass-modal-overlay {
+    padding: 0.75rem !important;
+  }
+
+  .glass-modal-panel {
+    padding: 1.25rem 1rem !important;
+    border-radius: 18px !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  .leaflet-modal-header {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.75rem !important;
+    position: relative !important;
+    padding-bottom: 0.85rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .leaflet-modal-brand {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding-right: 36px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .leaflet-modal-brand span.font-serif {
+    font-size: 1.15rem !important;
+  }
+
+  .leaflet-gmp-badge {
+    font-size: 9.5px !important;
+    padding: 3px 8px !important;
+  }
+
+  .leaflet-modal-actions {
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  .leaflet-translate-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    font-size: 11.5px !important;
+    padding: 7px 12px !important;
+  }
+
+  .leaflet-close-btn {
+    position: absolute !important;
+    top: -4px !important;
+    right: 0 !important;
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 15px !important;
+  }
+}
